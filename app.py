@@ -8,7 +8,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime, timedelta
 import hashlib
-import ssl
 
 # =============================================
 # 页面配置
@@ -28,12 +27,12 @@ def get_db_connection():
     return pymysql.connect(
         host='gateway01.ap-northeast-1.prod.aws.tidbcloud.com',
         port=4000,
-        user='2ydCG1BzhT1ixaf.root',
-        password='Gy5Jlz1qgQCVi9ZP',
+        user='35HPG38KmE6RWJV.root',  # 使用正确的用户名
+        password='2QSDdLRgShL3cROk',   # 使用正确的密码
         database='test',
         charset='utf8mb4',
+        ssl_verify_cert=True,
         cursorclass=pymysql.cursors.DictCursor,
-        ssl={'ca': None}, 
         connect_timeout=30
     )
 
@@ -72,6 +71,7 @@ def init_user_table():
         conn = get_db_connection()
         try:
             with conn.cursor() as cursor:
+                # 检查表是否存在（TiDB兼容MySQL语法）
                 cursor.execute("SHOW TABLES LIKE 'users'")
                 if cursor.fetchone() is None:
                     cursor.execute("""
@@ -93,10 +93,13 @@ def init_user_table():
                         ('admin', default_pwd, '系统管理员', 'admin')
                     )
                     conn.commit()
+                    print("✅ 用户表初始化成功")
+        except Exception as e:
+            st.error(f"初始化用户表失败：{e}")
         finally:
             conn.close()
     except Exception as e:
-        st.error(f"初始化用户表失败：{e}")
+        st.error(f"数据库连接失败：{e}")
 
 # =============================================
 # 登录页面
