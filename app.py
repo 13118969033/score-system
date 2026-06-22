@@ -32,8 +32,9 @@ def get_db_connection():
         password='Gy5Jlz1qgQCVi9ZP',
         database='test',
         charset='utf8mb4',
-        ssl_verify_cert=True,
-        cursorclass=pymysql.cursors.DictCursor
+        cursorclass=pymysql.cursors.DictCursor,
+        ssl={'ca': None}, 
+        connect_timeout=30
     )
 
 # =============================================
