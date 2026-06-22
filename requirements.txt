@@ -1,4 +1,5 @@
 streamlit
 pymysql
 pandas
-cryptography
+plotly
+openpyxl
