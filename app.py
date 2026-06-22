@@ -27,8 +27,8 @@ def get_db_connection():
     return pymysql.connect(
         host='gateway01.ap-northeast-1.prod.aws.tidbcloud.com',
         port=4000,
-        user='35HPG38KmE6RWJV.root',  # 使用正确的用户名
-        password='2QSDdLRgShL3cROk',   # 使用正确的密码
+        user='35HPG38KmE6RWJV.root',
+        password='2QSDdLRgShL3cROk',
         database='test',
         charset='utf8mb4',
         ssl_verify_cert=True,
@@ -71,7 +71,6 @@ def init_user_table():
         conn = get_db_connection()
         try:
             with conn.cursor() as cursor:
-                # 检查表是否存在（TiDB兼容MySQL语法）
                 cursor.execute("SHOW TABLES LIKE 'users'")
                 if cursor.fetchone() is None:
                     cursor.execute("""
