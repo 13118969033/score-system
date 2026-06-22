@@ -27,10 +27,11 @@ def get_db_connection():
     return pymysql.connect(
         host='gateway01.ap-northeast-1.prod.aws.tidbcloud.com',
         port=4000,
-        user='root',
+        user='2ydCG1BzhT1ixaf.root',
         password='1234',
-        database='teching',
+        database='test',
         charset='utf8mb4',
+        ssl_verify_cert=True,
         cursorclass=pymysql.cursors.DictCursor
     )
 
