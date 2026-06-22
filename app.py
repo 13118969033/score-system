@@ -25,7 +25,7 @@ st.set_page_config(
 def get_db_connection():
     """获取数据库连接"""
     return pymysql.connect(
-        host='localhost',
+        host='gateway01.ap-northeast-1.prod.aws.tidbcloud.com',
         user='root',
         password='1234',
         database='teching',
