@@ -26,6 +26,7 @@ def get_db_connection():
     """获取数据库连接"""
     return pymysql.connect(
         host='gateway01.ap-northeast-1.prod.aws.tidbcloud.com',
+        port=4000,
         user='root',
         password='1234',
         database='teching',
