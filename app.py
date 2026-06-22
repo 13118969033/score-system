@@ -8,6 +8,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime, timedelta
 import hashlib
+import ssl
 
 # =============================================
 # 页面配置
@@ -20,10 +21,10 @@ st.set_page_config(
 )
 
 # =============================================
-# 数据库连接函数
+# 数据库连接函数（TiDB Cloud）
 # =============================================
 def get_db_connection():
-    """获取数据库连接"""
+    """获取TiDB Cloud数据库连接"""
     return pymysql.connect(
         host='gateway01.ap-northeast-1.prod.aws.tidbcloud.com',
         port=4000,
