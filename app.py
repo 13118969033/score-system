@@ -28,7 +28,7 @@ def get_db_connection():
         host='gateway01.ap-northeast-1.prod.aws.tidbcloud.com',
         port=4000,
         user='2ydCG1BzhT1ixaf.root',
-        password='1234',
+        password='Gy5Jlz1qgQCVi9ZP',
         database='test',
         charset='utf8mb4',
         ssl_verify_cert=True,
